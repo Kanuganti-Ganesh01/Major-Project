@@ -1,13 +1,11 @@
 import express from 'express';
 import { createServer } from 'node:http';
-
 import { Server } from 'socket.io';
-
 import mongoose from 'mongoose';
 import { connectToSocket } from './controllers/socketManager.js';
-
 import cors from 'cors';
 import userRoutes from './routers/users.routes.js';
+import geminiRoutes from './routers/gemini.routes.js';
 
 const app = express();
 const server = createServer(app);
@@ -19,6 +17,7 @@ app.use(express.json({ limit: '40kb' }));
 app.use(express.urlencoded({ limit: '40kb', extended: true }));
 
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/gemini', geminiRoutes);
 
 const start = async () => {
   app.set('mongo_user');

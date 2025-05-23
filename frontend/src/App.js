@@ -6,11 +6,13 @@ import { AuthProvider } from './contexts/AuthContext';
 import VideoMeetComponent from './pages/VideoMeet';
 import HomeComponent from './pages/home';
 import History from './pages/history';
+import GeminiChat from './components/GeminiChat';
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <GeminiChat />
         <AuthProvider>
           <Routes>
             <Route path="/" element={<LandingPage />} />
